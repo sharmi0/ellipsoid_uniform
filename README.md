@@ -5,15 +5,12 @@ This repository includes code to generate a uniform distribution of points on th
 ### Steps to Generate Points
 
 1. **Generate Points on a Sphere**  
-   Start by choosing a point `(x, y, z)` uniformly on a unit sphere. This can be done by sampling three points from a multivariate standard normal distribution in $\mathbb{R}^3$ and normalizing the result. For more details, refer to this [explanation on Cory Simon's blog](https://corysimon.github.io/articles/uniformdistn-on-sphere/).
+   Choose a point $(x,y,z)$ uniformly on a sphere by sampling 3 points on a multivariate standard normal distribution on $\mathbb{R}^3$. For more details, refer to this [explanation on Cory Simon's blog](https://corysimon.github.io/articles/uniformdistn-on-sphere/).
 
 2. **Map to the Ellipsoid**  
    To transform the points from the unit sphere to the ellipsoid, apply the mapping:
    
    $f(x, y, z) \rightarrow (x' = ax, y' = by, z' = cz)$
-
-   
-   This scaling adjusts the coordinates according to the ellipsoid’s axes `a`, `b`, and `c`.
 
 3. **Correct for Distortion**  
    To correct the distortion introduced by scaling, discard points with a probability $p(x, y, z) = \frac{\mu_{(x, y, z)}}{\mu_{\text{max}}}$, where:
